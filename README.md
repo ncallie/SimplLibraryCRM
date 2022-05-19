@@ -26,3 +26,18 @@ create table book (
     person_id int REFERENCES person(person_id)
 )
 ```
+
+```
+insert into book (name, author, year) values ('Гарри Поттер и узник Азкабана', 'Джоан Роулинг', 1999);
+insert into book (name, author, year) values ('Зелёная миля', 'Стивен Кинг', 1996);
+insert into book (name, author, year) values ('Унесённые ветром', 'Маргарет Митчелл', 1936);
+insert into book (name, author, year) values ('Граф Монте-Кристо', 'Александр Дюма-отец', 1844);
+insert into book (name, author, year) values ('Крёстный отец', 'Марио Пьюзо', 1969);
+insert into book (name, author, year) values ('Десять негритят', 'Агата Кристи', 1939);
+insert into book (name, author, year) values ('Рита Хейуорт и спасение из Шоушенка', 'Стивен Кинг', 1982);
+insert into book (name, author, year) values ('Убить пересмешника', 'Харпер Ли', 1960);
+insert into book (name, author, year) values ('Мастер и Маргарита', 'Михаил Булгаков', 1966);
+insert into book (name, author, year) values ('На Западном фронте без перемен', 'Эрих Мария Ремарк', 1929);
+insert into book (name, author, year) values ('Белый Бим Чёрное ухо', 'Гавриил Троепольский', 1971);
+insert into book (name, author, year) values ('1984', 'Джордж Оруэлл', 1948);
+```

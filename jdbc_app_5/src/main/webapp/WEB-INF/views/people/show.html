@@ -12,7 +12,6 @@
     <li>Email: <span th:text="${person.getEmail()}">email</span></li>
     <li>Номер телефона: <span th:text="${person.getPhone()}">phone</span></li>
 </ul>
-<hr>
 <form method="GET" th:action="@{/people/{person_id}/edit(person_id=${person.getPerson_id()})}">
     <input type="submit" value="Обновить данные">
 </form>
@@ -20,6 +19,14 @@
     <input type="submit" value="Удалить пользователя">
 </form>
 </form>
+<hr>
+<h2 th:if="${#lists.isEmpty(books)}">Пользователь не брал книги</h2>
+<h2 th:unless="${#lists.isEmpty(books)}">Список книг:</h2>
+<div th:each="book : ${books}">
+    <ul>
+        <li ><a th:href="@{/books/{book_id}(book_id=${book.getBook_id()})}" th:text="${book.getName()}">book</a></li>
+    </ul>
+</div>
 <hr>
 <form method="GET" action="/people">
     <input type="submit" value="Список пользователей">

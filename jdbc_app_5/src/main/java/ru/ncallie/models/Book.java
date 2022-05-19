@@ -5,14 +5,12 @@ public class Book {
     private String name;
     private String author;
     private int year;
-    private Integer person_id;
 
-    public Book(int book_id, String name, String author, int year, Integer person_id) {
+    public Book(int book_id, String name, String author, int year) {
         this.book_id = book_id;
         this.name = name;
         this.author = author;
         this.year = year;
-        this.person_id = person_id;
     }
 
     public Book() {
@@ -50,11 +48,4 @@ public class Book {
         this.year = year;
     }
 
-    public Integer getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(Integer person_id) {
-        this.person_id = person_id;
-    }
 }

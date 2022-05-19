@@ -10,7 +10,6 @@
     <li>Название: <span th:text="${book.getName()}">name</span></li>
     <li>Автор: <span th:text="${book.getAuthor()}">author</span></li>
     <li>Год публикации: <span th:text="${book.getYear()}">year</span></li>
-    <li>Имеется в наличии: <span th:text="${book.getPerson_id()} == null ? 'Да' : 'Нет'">available</span></li>
 </ul>
 <form method="GET" th:action="@{/books/{book_id}/edit(book_id=${book.getBook_id()})}">
     <input type="submit" value="Обновить данные">

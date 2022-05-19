@@ -22,8 +22,8 @@ public class BookDAO {
        return jdbcTemplate.query("SELECT * FROM Book", new BeanPropertyRowMapper<>(Book.class));
     }
     public Book show(int id) {
-        return jdbcTemplate.queryForObject("SELECT * FROM Book WHERE book_id=?",
-                new BeanPropertyRowMapper<>(Book.class), id);
+        return jdbcTemplate.query("SELECT * FROM Book WHERE book_id=?", new BeanPropertyRowMapper<>(Book.class), id)
+                .stream().findAny().orElse(null);
     }
 
     public void save(Book book) {

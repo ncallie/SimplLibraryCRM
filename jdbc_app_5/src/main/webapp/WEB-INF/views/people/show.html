@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.orf">
+<head>
+    <meta charset="UTF-8">
+    <title>Данные пользователя</title>
+</head>
+<body>
+<h1>Данные пользователя:</h1>
+<ul>
+    <li>ФИО: <span th:text="${person.getName()}">name</span></li>
+    <li>Год рождения: <span th:text="${person.getBirth_year()}">birth_year</span></li>
+    <li>Email: <span th:text="${person.getEmail()}">email</span></li>
+    <li>Номер телефона: <span th:text="${person.getPhone()}">phone</span></li>
+</ul>
+<hr>
+<form method="GET" th:action="@{/people/{person_id}/edit(person_id=${person.getPerson_id()})}">
+    <input type="submit" value="Обновить данные">
+</form>
+<form th:method="DELETE" th:action="@{/people/{person_id}(person_id=${person.getPerson_id()})}">
+    <input type="submit" value="Удалить пользователя">
+</form>
+</form>
+<hr>
+<form method="GET" action="/people">
+    <input type="submit" value="Список пользователей">
+</form>
+<form method="GET" action="/">
+    <input type="submit" value="Меню">
+</form>
+
+</body>
+</html>

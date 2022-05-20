@@ -1,10 +1,21 @@
 package ru.ncallie.models;
 
+
+import javax.validation.constraints.*;
+
 public class Person {
     private int person_id;
+    @NotEmpty(message = "Поле ФИО должно быть заполнено")
+    @Pattern(regexp = "[А-Я][а-я]{3,20} [А-Я][а-я]{3,20} [А-Я][а-я]{3,20}", message = "Неверный формат")
     private String name;
+    @Min(value = 1900, message = "Неверно указан год")
+    @Max(value = 9999, message = "Неверно указан год")
     private int birth_year;
+    @Email(message = "Email содержит ошибки")
+    @NotEmpty(message = "Поле Email должно быть заполнено")
     private String email;
+    @NotEmpty(message = "Поле Номер телефона должно быть заполнено")
+    @Pattern(regexp = "\\+7\\d{10}", message = "Неверный формат номера телефона, формат:+79999999999")
     private String phone;
 
 

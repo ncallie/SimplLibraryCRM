@@ -2,12 +2,14 @@ package ru.ncallie.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.ncallie.dao.BookDAO;
 import ru.ncallie.dao.PersonDAO;
 import ru.ncallie.models.Book;
 import ru.ncallie.models.Person;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -46,7 +48,10 @@ public class BooksController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("book") Book book) {
+    public String create(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "books/new";
+        }
         bookDAO.save(book);
         return "redirect:/books";
     }
@@ -58,7 +63,10 @@ public class BooksController {
     }
 
     @PatchMapping("/{book_id}")
-    public String update(@ModelAttribute("book") Book book, @PathVariable("book_id") int book_id) {
+    public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult, @PathVariable("book_id") int book_id) {
+        if (bindingResult.hasErrors())
+            return "books/edit";
+
         bookDAO.update(book_id, book);
         return "redirect:/books";
     }

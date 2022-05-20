@@ -31,6 +31,7 @@ public class PersonDAO {
                 stream().findAny().orElse(null);
     }
 
+
     public void save(Person person) {
         jdbcTemplate.update("INSERT INTO Person(name, birth_year, email, phone) VALUES(?, ?, ?, ?)",
                 person.getName(), person.getBirth_year(), person.getEmail(), person.getPhone());
@@ -48,5 +49,15 @@ public class PersonDAO {
 
     public List<Book> getBookWherePersonId(int person_id) {
         return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new BeanPropertyRowMapper<>(Book.class), person_id);
+    }
+
+    //Validation
+    public Person showEmail(String email) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?",
+                new BeanPropertyRowMapper<>(Person.class), email).stream().findAny().orElse(null);
+    }
+    public Person showPhone(String phone) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE phone=?",
+                new BeanPropertyRowMapper<>(Person.class), phone).stream().findAny().orElse(null);
     }
 }

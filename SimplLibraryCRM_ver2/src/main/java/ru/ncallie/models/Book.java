@@ -1,7 +1,10 @@
 package ru.ncallie.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Book {
     private int book_id;
+    @NotEmpty(message = "Поле должно быть заполнено")
     private String name;
     private String author;
     private int year;

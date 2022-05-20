@@ -1,8 +1,8 @@
 # SimplLibraryCRM
 
 ## Версии
-- SimplLibraryCRM_ver1 (JDBC template, tomcat..)
-- SimplLibraryCRM_ver2 переход на Spring Boot
+- SimplLibraryCRM_ver1 - (JDBC template, tomcat..)
+- SimplLibraryCRM_ver2 - переход на Spring Boot
 
 Таблица Person
 ```

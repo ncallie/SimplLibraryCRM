@@ -10,6 +10,7 @@ import ru.ncallie.models.Person;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -25,9 +26,9 @@ public class PersonDAO {
         return jdbcTemplate.query("SELECT * FROM Person",
                 new BeanPropertyRowMapper<>(Person.class));
     }
-    public Person show(int person_id) {
+    public Optional<Person> show(int person_id) {
         return jdbcTemplate.query("SELECT * FROM Person WHERE person_id=?", new BeanPropertyRowMapper<>(Person.class), person_id).
-                stream().findAny().orElse(null);
+                stream().findAny();
     }
 
     public void save(Person person) {
@@ -45,7 +46,7 @@ public class PersonDAO {
                 person_id);
     }
 
-    public List<Book> selectBookWherePersonId(int person_id) {
+    public List<Book> getBookWherePersonId(int person_id) {
         return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new BeanPropertyRowMapper<>(Book.class), person_id);
     }
 }

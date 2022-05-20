@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.ncallie</groupId>
-  <artifactId>mvc_app_1</artifactId>
+  <artifactId>SimplLibraryCRM</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>mvc_app_1 Maven Webapp</name>
+  <name>SimplLibraryCRM Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 

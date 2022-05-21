@@ -27,7 +27,7 @@ create table book (
     name varchar NOT NULL,
     author varchar,
     year int,
-    person_id int REFERENCES person(person_id)
+    person_id int REFERENCES person(person_id) ON DELETE SET NULL
 )
 ```
 

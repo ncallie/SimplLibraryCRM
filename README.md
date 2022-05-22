@@ -46,3 +46,4 @@ insert into book (name, author, year) values ('На Западном фронт�
 insert into book (name, author, year) values ('Белый Бим Чёрное ухо', 'Гавриил Троепольский', 1971);
 insert into book (name, author, year) values ('1984', 'Джордж Оруэлл', 1948);
 ```
+[Spring Data JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference)

@@ -1,5 +1,6 @@
 package ru.ncallie.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -61,6 +62,7 @@ public class PersonDAO {
     public List<Book> getBookWherePersonId(int person_id) {
         Session session = sessionFactory.getCurrentSession();
         Person person = session.get(Person.class, person_id);
+        Hibernate.initialize(person.getBooks());
         List<Book> books = person.getBooks();
         if (books == null)
             books = new ArrayList<>();

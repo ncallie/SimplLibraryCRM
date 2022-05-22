@@ -34,7 +34,7 @@ public class Person {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner")
     private List<Book> books;
 
 

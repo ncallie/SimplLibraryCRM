@@ -4,6 +4,7 @@
 - SimplLibraryCRM_ver1 - (JDBC template, tomcat..)
 - SimplLibraryCRM_ver2 - переход на Spring Boot
 - SimplLibraryCRM_ver3 - переход на Hibernate ORM(DAO)
+- SimplLibraryCRM_ver4 - переход на паттерн Repository, добавлен Spring security(не настроен)
 
 Таблица Person
 ```

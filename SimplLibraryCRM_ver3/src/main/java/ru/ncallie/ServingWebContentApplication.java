@@ -42,7 +42,6 @@ public class ServingWebContentApplication {
       return dataSource;
    }
 
-   @Autowired
    @Bean(name = "sessionFactory")
    public SessionFactory getSessionFactory(DataSource dataSource) throws Exception {
       Properties properties = new Properties();
@@ -60,7 +59,6 @@ public class ServingWebContentApplication {
       return sf;
    }
 
-   @Autowired
    @Bean(name = "transactionManager")
    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
       HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);

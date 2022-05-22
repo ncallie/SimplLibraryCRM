@@ -3,7 +3,7 @@
 ## Версии
 - SimplLibraryCRM_ver1 - (JDBC template, tomcat..)
 - SimplLibraryCRM_ver2 - переход на Spring Boot
-- SimplLibraryCRM_ver3 - переход на Hibernate ORM
+- SimplLibraryCRM_ver3 - переход на Hibernate ORM(DAO)
 
 Таблица Person
 ```

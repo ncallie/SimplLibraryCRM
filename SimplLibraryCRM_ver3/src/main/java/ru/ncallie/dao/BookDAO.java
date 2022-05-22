@@ -17,8 +17,7 @@ import ru.ncallie.models.Person;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-@Transactional
+@Component
 public class BookDAO {
 
     private SessionFactory sessionFactory;
@@ -28,33 +27,38 @@ public class BookDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional(readOnly = true)
     public List<Book> index () {
         Session session = sessionFactory.getCurrentSession();
-        List<Book> books = session.createQuery("FROM Book", Book.class).getResultList();
-        return books;
+        return session.createQuery("FROM Book", Book.class).getResultList();
     }
+
+    @Transactional(readOnly = true)
     public Book show(int book_id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Book.class, book_id);
-
     }
 
+    @Transactional
     public void save(Book book) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(book);
     }
 
+    @Transactional
     public void update(int book_id, Book book) {
         Session session = sessionFactory.getCurrentSession();
         session.update(book);
     }
 
+    @Transactional
     public void delete(int book_id) {
         Session session = sessionFactory.getCurrentSession();
         Book book = session.get(Book.class, book_id);
         session.remove(book);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Person> getOwner(int book_id) {
         Session session = sessionFactory.getCurrentSession();
         Book book = session.get(Book.class, book_id);
@@ -64,13 +68,14 @@ public class BookDAO {
         return Optional.of(owner);
     }
 
-
+    @Transactional
     public void release(int book_id) {
         Session session = sessionFactory.getCurrentSession();
         Book book = session.get(Book.class, book_id);
         book.setOwner(null);
     }
 
+    @Transactional
     public void assign(int book_id, Person person) {
         Session session = sessionFactory.getCurrentSession();
         Book book = session.get(Book.class, book_id);

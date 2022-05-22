@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-@Transactional()
+@Component
 public class PersonDAO {
 
     private SessionFactory sessionFactory;
@@ -30,28 +29,32 @@ public class PersonDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional(readOnly = true)
     public List<Person> index() {
         Session session = sessionFactory.getCurrentSession();
-        List<Person> from_person = session.createQuery("FROM Person", Person.class).getResultList();
-        return from_person;
+        return session.createQuery("FROM Person", Person.class).getResultList();
     }
 
+    @Transactional(readOnly = true)
     public Person show(int person_id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Person.class, person_id);
     }
 
 
+    @Transactional()
     public void save(Person person) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(person);
     }
 
+    @Transactional()
     public void update(int person_id, Person person) {
         Session session = sessionFactory.getCurrentSession();
         session.update(person);
     }
 
+    @Transactional()
     public void delete(int person_id) {
         Session session = sessionFactory.getCurrentSession();
         Person person = session.get(Person.class, person_id);
@@ -59,6 +62,7 @@ public class PersonDAO {
 
     }
 
+    @Transactional(readOnly = true)
     public List<Book> getBookWherePersonId(int person_id) {
         Session session = sessionFactory.getCurrentSession();
         Person person = session.get(Person.class, person_id);
@@ -70,6 +74,7 @@ public class PersonDAO {
     }
 
     //Validation
+    @Transactional(readOnly = true)
     public Person showEmail(String email) {
         Session session = sessionFactory.getCurrentSession();
         Query<Person> query = session.createQuery("FROM Person WHERE email= :paramEmail", Person.class);
@@ -77,6 +82,7 @@ public class PersonDAO {
         return query.getResultList().stream().findAny().orElse(null);
 
     }
+    @Transactional(readOnly = true)
     public Person showPhone(String phone) {
         Session session = sessionFactory.getCurrentSession();
         Query<Person> query = session.createQuery("FROM Person WHERE email= :paramPhone", Person.class);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Список пользователей:</h1>
+<div th:each="person : ${people}" >
+  <ul>
+    <li>
+        <p>Login: <a th:href="@{/admin/show/{id}(id=${person.getId()})}" th:text="${person.getUsername()}">username</a>
+            <br/>
+           Статус: <span th:text="${person.getRoleSimp()}">Не задан</span>
+            <br/>
+            <th:block th:if="${person.getPersonInfo()}">
+           ФИО: <span th:text="${person.getPersonInfo().getFullName()}">Не задано</span>
+            </th:block>
+            <th:block th:unless="${person.getPersonInfo()}">
+                <span style="color: red">Данные о пользователе не заполнены</span>
+            </th:block>
+        </p>
+    </li>
+  </ul>
+</div>
+<hr>
+<form method="GET" action="/admin/">
+    <input type="submit" value="Меню">
+</form>
+</body>
+</html>

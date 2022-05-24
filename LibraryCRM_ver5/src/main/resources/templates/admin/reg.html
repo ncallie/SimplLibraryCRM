@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить пользователя</title>
+</head>
+<body>
+<h1>Регистрация нового аккаунта</h1>
+<form th:method="POST" th:action="@{/admin/reg}" th:object="${person}">
+  <label for="username">Введите имя пользователя: </label>
+  <input type="text" style=position:absolute;left:18%; size="30" th:field="*{username}" id="username">
+  <br>
+  <label for="password">Введите пароль: </label>
+  <input type="password" style=position:absolute;left:18%; size="30" th:field="*{password}" id="password">
+  <br>
+  <br>
+  <label for="person">Роль: </label>
+  <select style=position:absolute;left:18%; th:field="*{role}" id="person">
+    <option th:value="ROLE_USER">Пользователь</option>
+    <option th:value="ROLE_STAFF">Библиотекарь</option>
+    <option th:value="ROLE_ADMIN">Администратор</option>
+  </select>
+  <br>
+  <br>
+  <input type="submit" value="Зарегестрировать" />
+</form>
+<hr>
+<form method="GET" action="/admin/">
+  <input type="submit" value="Меню">
+</form>
+</body>
+</html>

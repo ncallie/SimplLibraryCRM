@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.orf">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о книге</title>
+</head>
+<body>
+<h1>Информация о книге</h1>
+<ul>
+    <li>Название: <span th:text="${book.getName()}">name</span></li>
+    <li>Автор: <span th:text="${book.getAuthor()}">author</span></li>
+    <li>Год публикации: <span th:text="${book.getYear()}">year</span></li>
+    <th:block th:if="${owner}">
+        <li>В пользовании: <span th:text="${owner.getFullName()}">name</span></li>
+        <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
+            <input type="submit" value="Вернуть книгу">
+        </form>
+    </th:block>
+</ul>
+<form method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
+    <input type="submit" value="Обновить данные">
+</form>
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+    <input type="submit" value="Удалить книгу">
+</form>
+<th:block th:if="${people}">
+    <hr>
+    <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
+        <label for="person">Назначить книгу пользователю:</label>
+        <select th:object="${person}" th:field="*{id}" id="person">
+            <div th:each="person : ${people}" >
+                <th:block th:if="${person.getRole == 'ROLE_USER'}">
+                    <th:block th:if="${person.personInfo}">
+                    <option  th:value="${person.getId()}" th:text="${person.personInfo.getFullName()}"></option>
+                    </th:block>
+                </th:block>
+            </div>
+            <input type="submit" value="Назначить">
+        </select>
+    </form>
+</th:block>
+<hr>
+<th:block th:if="${role == 'ROLE_ADMIN'}">
+    <form method="GET" th:action="@{/admin/}">
+        <input type="submit" value="Меню">
+    </form>
+</th:block>
+<th:block th:if="${role == 'ROLE_STAFF'}">
+    <form method="GET" th:action="@{/staff/}">
+        <input type="submit" value="Меню">
+    </form>
+</th:block>
+</body>
+</html>

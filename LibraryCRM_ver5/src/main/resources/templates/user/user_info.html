@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Информация о пользователе:</h1>
+<ul>
+  <li>Username: <span th:text="${person.getUsername()}">username</span></li>
+  <th:block th:if="${person_info}">
+    <li>ФИО: <span th:text="${person_info.getFullName()}">fullname</span></li>
+    <li>Год рождения: <span th:text="${person_info.getBirth_year()}">Birth_year</span></li>
+    <li>Email: <span th:text="${person_info.getEmail()}">email</span></li>
+    <li>Номер телефона: <span th:text="${person_info.getPhone()}">phone</span></li>
+  </th:block>
+</ul>
+<br/>
+<hr>
+<h2 th:if="${#lists.isEmpty(books)}">Пользователь не брал книги</h2>
+<h2 th:unless="${#lists.isEmpty(books)}">Список книг:</h2>
+<div th:each="book : ${books}">
+  <ul>
+    <li ><a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getName()}">book</a></li>
+  </ul>
+</div>
+<hr>
+<form th:action="@{/logout}" th:method="POST">
+  <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>

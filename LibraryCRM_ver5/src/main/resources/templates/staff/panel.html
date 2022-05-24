@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1>Панель сотрудника</H1>
+<table border="1" width="30%" cellpadding="5">
+    <tr>
+        <th>Функции</th>
+    </tr>
+    <tr>
+        <td><a href="/staff/reg">Регистрация нового пользователя</a></td>
+    </tr>
+    <tr>
+        <td><a href="/staff/show">Список всех пользователей</a></td>
+    </tr>
+    <tr>
+        <td><a href="/books">Список книг</a></td>
+    </tr>
+</table>
+<hr>
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>

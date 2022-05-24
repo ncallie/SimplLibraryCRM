@@ -21,7 +21,7 @@
 <h2 th:unless="${#lists.isEmpty(books)}">Список книг:</h2>
 <div th:each="book : ${books}">
   <ul>
-    <li ><a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getName()}">book</a></li>
+    <li ><p th:text="${book.getName()}">book</p></li>
   </ul>
 </div>
 <hr>

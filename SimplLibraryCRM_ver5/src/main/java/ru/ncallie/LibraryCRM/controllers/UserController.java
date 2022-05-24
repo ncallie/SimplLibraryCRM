@@ -37,10 +37,10 @@ public class UserController {
             List<Book> books = personInfo.getBooks();
             model.addAttribute("books", books);
         }
+        else
+            model.addAttribute("books", Collections.EMPTY_LIST);
         model.addAttribute("person", person);
         model.addAttribute("person_info", personInfo);
-        model.addAttribute("books", Collections.EMPTY_LIST);
-
         return "user/user_info";
     }
 }

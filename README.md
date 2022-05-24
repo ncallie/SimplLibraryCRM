@@ -11,13 +11,15 @@
 - Добавление/Удаление (администраторов, персонала, пользователей)
 - Выдача книг определенным пользователям (только персонал, администраторы)
 - Аутентификация и авторизация(роли)
-### User
-![user](https://user-images.githubusercontent.com/92088165/170107183-bf379400-9080-4f3f-84d2-474735eb0dd9.gif)
-### Staff
-![staff](https://user-images.githubusercontent.com/92088165/170107229-eb4dfd80-5d68-4e83-bca5-ff8f8c212cfe.gif)
-### Admin
-![admin](https://user-images.githubusercontent.com/92088165/170107261-2b480389-9b6f-49fe-b757-a681eba2a180.gif)
 
+### Admin
+<img src="https://user-images.githubusercontent.com/92088165/170107261-2b480389-9b6f-49fe-b757-a681eba2a180.gif" width="250" height="250"/>
+
+### Staff
+<img src="https://user-images.githubusercontent.com/92088165/170107229-eb4dfd80-5d68-4e83-bca5-ff8f8c212cfe.gif" width="250" height="250"/>
+
+### User
+<img src="https://user-images.githubusercontent.com/92088165/170107183-bf379400-9080-4f3f-84d2-474735eb0dd9.gif" width="250" height="250"/>
 
 ## Таблицы(ver5)
 ```

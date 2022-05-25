@@ -3,6 +3,7 @@ package ru.ncallie.LibraryCRM.models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -14,10 +15,13 @@ public class Person {
     private Integer id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
-    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
+    @Size(min = 5, max = 20, message = "Имя должно быть длинной от 5 до 20")
+    @Pattern(regexp = "\\w+", message = "Логин должен сожержать только латинские буквы, цифры, символы ")
     @Column(name = "username")
     private String username;
 
+    @Size(min = 5, max = 18, message = "Пароль должен быть длинной от 5 до 18")
+    @NotEmpty(message = "Пароль не должен быть пустым")
     @Column(name = "password")
     private String password;
 
@@ -80,15 +84,5 @@ public class Person {
                 return "Администратор";
         }
         return "Неизвестно";
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
     }
 }

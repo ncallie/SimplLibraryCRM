@@ -10,6 +10,7 @@ import ru.ncallie.LibraryCRM.models.PersonInfo;
 import ru.ncallie.LibraryCRM.services.PersonInfoService;
 import ru.ncallie.LibraryCRM.services.PersonService;
 import ru.ncallie.LibraryCRM.services.RegistrationService;
+import ru.ncallie.LibraryCRM.util.PersonInfoValidator;
 import ru.ncallie.LibraryCRM.util.PersonValidator;
 
 import javax.validation.Valid;
@@ -22,13 +23,15 @@ public class AdminController {
     private final RegistrationService registrationService;
     private final PersonService personService;
     private final PersonInfoService personInfoService;
+    private final PersonInfoValidator personInfoValidator;
 
     @Autowired
-    public AdminController(PersonValidator personValidator, RegistrationService registrationService, PersonService personService, PersonInfoService personInfoService) {
+    public AdminController(PersonValidator personValidator, RegistrationService registrationService, PersonService personService, PersonInfoService personInfoService, PersonInfoValidator personInfoValidator) {
         this.personValidator = personValidator;
         this.registrationService = registrationService;
         this.personService = personService;
         this.personInfoService = personInfoService;
+        this.personInfoValidator = personInfoValidator;
     }
 
     @GetMapping("/")
@@ -74,8 +77,22 @@ public class AdminController {
     }
 
     @PatchMapping("/update/{id}")
-    public String update(@ModelAttribute("person") Person person, @PathVariable("id") int id) {
-        personService.update(id, person);
+    public String update(Model model,@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @PathVariable("id") int id) {
+        if(bindingResult.hasErrors())
+            if (bindingResult.hasErrors()) {
+                if (bindingResult.hasFieldErrors("password") && bindingResult.getAllErrors().size() == 1)
+                    ;
+                else
+                    return "admin/edit";
+            }
+
+        try {
+            personService.update(id, person);
+        } catch (Exception e) {
+            model.addAttribute("wrong", "Неверно заполненны поля, повторите попытку");
+            return "admin/edit";
+        }
+
         return "redirect:/admin/show";
     }
 

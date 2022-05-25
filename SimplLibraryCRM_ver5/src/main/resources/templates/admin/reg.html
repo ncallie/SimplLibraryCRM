@@ -9,9 +9,11 @@
 <form th:method="POST" th:action="@{/admin/reg}" th:object="${person}">
   <label for="username">Введите имя пользователя: </label>
   <input type="text" style=position:absolute;left:18%; size="30" th:field="*{username}" id="username">
+  <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username error</div>
   <br>
   <label for="password">Введите пароль: </label>
   <input type="password" style=position:absolute;left:18%; size="30" th:field="*{password}" id="password">
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</div>
   <br>
   <br>
   <label for="person">Роль: </label>

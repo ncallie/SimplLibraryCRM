@@ -6,9 +6,11 @@
 </head>
 <body>
 <h1>Изменение сведений:</h1>
+<div style="color:red" th:if="${wrong}" th:text="${wrong}">Global error</div>
 <form th:method="PATCH" th:action="@{/admin/update/{id}(id=${person.getId()})}" th:object="${person}">
     <label for="username">Username:</label>
     <input type="text" style=position:absolute;left:12%; size="50" th:field="*{username}" id="username"/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username error</div>
     <br>
     <input type="hidden" th:field="${person.personInfo}"/>
     <label for="fullName">ФИО:</label>
@@ -24,7 +26,6 @@
     <input type="text" style=position:absolute;left:12%; size="50" th:field="${person.personInfo.phone}" id="phone"/>
     <br>
     <input type="hidden" th:field="*{password}"/>
-<!--    <input type="hidden" th:field="*{role}"/>-->
     <label for="person">Роль: </label>
     <select style=position:absolute;left:12%;  th:field="*{role}" id="person">
         <option th:value="ROLE_USER">Пользователь</option>

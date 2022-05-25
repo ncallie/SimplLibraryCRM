@@ -1,6 +1,8 @@
 package ru.ncallie.LibraryCRM.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -10,11 +12,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @NotEmpty(message = "Поле должно быть заполнено")
     @Column(name = "name")
     private String name;
+
     @Column(name = "author")
     private String author;
+
+    @Min(value = 0, message = "Неверно указан год")
+    @Max(value = 9999, message = "Неверно указан год")
     @Column(name = "year")
     private int year;
 
@@ -65,14 +72,4 @@ public class Book {
         this.owner = owner;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", year=" + year +
-                ", owner=" + owner +
-                '}';
-    }
 }

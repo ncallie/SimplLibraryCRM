@@ -99,17 +99,4 @@ public class PersonInfo {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-
-    @Override
-    public String toString() {
-        return "PersonInfo{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", birth_year=" + birth_year +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", person=" + person +
-                ", books=" + books +
-                '}';
-    }
 }

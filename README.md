@@ -6,7 +6,7 @@
 - SimplLibraryCRM_ver3 - переход на Hibernate ORM(DAO)
 - SimplLibraryCRM_ver4 - переход на паттерн Repository, добавлен Spring security(не настроен)
 - SimplLibraryCRM_ver5 - настроен Spring security, частичная валидация значений, (первый admin добавляется через БД [password](https://bcrypt-generator.com/))
-- SimplLibraryCRM_ver6 - переход на REST API
+- SimplLibraryCRM_ver6 - переход на REST API + Lombok (в работе) :recycle:
 ## Функционал
 - Добавление/удаление книг
 - Добавление/Удаление (администраторов, персонала, пользователей)

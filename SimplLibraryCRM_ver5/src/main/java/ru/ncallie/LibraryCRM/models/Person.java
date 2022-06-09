@@ -20,7 +20,7 @@ public class Person {
     @Column(name = "username")
     private String username;
 
-    @Size(min = 5, max = 18, message = "Пароль должен быть длинной от 5 до 18")
+    @Size(min = 5, message = "Пароль должен быть длинной от 5 до 18")
     @NotEmpty(message = "Пароль не должен быть пустым")
     @Column(name = "password")
     private String password;

@@ -6,7 +6,7 @@
 - SimplLibraryCRM_ver2 - переход на Spring Boot
 - SimplLibraryCRM_ver3 - переход на Hibernate ORM(DAO)
 - SimplLibraryCRM_ver4 - переход на паттерн Repository
-- SimplLibraryCRM_ver5 - настроен Spring security, частичная валидация значений + bootstrap + FlyWay
+- SimplLibraryCRM_ver5 - настроен Spring security, валидация значений + bootstrap + FlyWay
 - SimplLibraryCRM_ver6 - переход на REST API + Lombok (в работе) :recycle:
 ## Функционал
 - Добавление/удаление книг

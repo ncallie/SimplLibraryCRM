@@ -16,8 +16,16 @@ public class PersonInfoService {
         this.personInfoRepository = personInfoRepository;
     }
 
-    public PersonInfo findOne(int person_id) {
+    public PersonInfo findOne(Integer person_id) {
         Optional<PersonInfo> byId = personInfoRepository.findByPersonId(person_id);
         return byId.orElse(null);
+    }
+
+    public PersonInfo findByEmail(String email) {
+       return personInfoRepository.findByEmail(email);
+    }
+
+    public PersonInfo findByPhone(String phone) {
+        return personInfoRepository.findByPhone(phone);
     }
 }

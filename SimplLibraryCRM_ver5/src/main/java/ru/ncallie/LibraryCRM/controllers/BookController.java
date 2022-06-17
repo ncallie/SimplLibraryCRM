@@ -38,11 +38,11 @@ public class BookController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         model.addAttribute("role", personDetails.getPerson().getRole());
-        return "books/index";
+        return "books/books";
     }
 
     @GetMapping("/{id}")
-    public String show(Model model, @PathVariable("id") int book_id, @ModelAttribute("person") Person personInfo) {
+    public String show(Model model, @PathVariable("id") Integer book_id, @ModelAttribute("person") Person personInfo) {
         Book book = bookService.findOne(book_id);
         PersonInfo owner = book.getOwner();
         model.addAttribute("book", book);
@@ -55,7 +55,7 @@ public class BookController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         model.addAttribute("role", personDetails.getPerson().getRole());
-        return "books/show";
+        return "books/book";
     }
 
     @GetMapping("/new")
@@ -64,36 +64,40 @@ public class BookController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("book") Book book) {
+    public String create(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "books/new";
         bookService.save(book);
         return "redirect:/books";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id")int id) {
+    public String edit(Model model, @PathVariable("id")Integer id) {
         model.addAttribute("book", bookService.findOne(id));
-        return "books/edit";
+        return "books/edit_book";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("book") Book book, @PathVariable("id") int id) {
+    public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult, @PathVariable("id") Integer id) {
+        if (bindingResult.hasErrors())
+            return "books/new";
         bookService.update(id, book);
         return "redirect:/books";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id")int id) {
+    public String delete(@PathVariable("id")Integer id) {
         bookService.delete(id);
         return "redirect:/books";
     }
 
     @PatchMapping("/{id}/release")
-    public String release(@PathVariable("id")int id) {
+    public String release(@PathVariable("id")Integer id) {
         bookService.release(id);
         return "redirect:/books/"+id;
     }
     @PatchMapping("/{id}/assign")
-    public String assign(@PathVariable("id")int id, @ModelAttribute("person") PersonInfo personInfo) {
+    public String assign(@PathVariable("id")Integer id, @ModelAttribute("person") PersonInfo personInfo) {
         bookService.assign(id, personInfo);
         return "redirect:/books/"+id;
     }

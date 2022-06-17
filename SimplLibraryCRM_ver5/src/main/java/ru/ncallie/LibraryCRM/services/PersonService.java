@@ -25,12 +25,12 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Person findOne(int id) {
+    public Person findOne(Integer id) {
         Optional<Person> byId = personRepository.findById(id);
         return byId.orElse(null);
     }
 
-    public void update(int id, Person person) {
+    public void update(Integer id, Person person) {
         person.setId(id);
         person.getPersonInfo().setPerson(person);
         Optional<PersonInfo> byPersonId = personInfoRepository.findByPersonId(id);
@@ -40,13 +40,17 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    public void delete(int id) {
+    public void delete(Integer id) {
         personRepository.deleteById(id);
     }
 
-    public PersonInfo findByPersonId(int id) {
+    public PersonInfo findByPersonId(Integer id) {
         Optional<PersonInfo> byPersonId = personInfoRepository.findByPersonId(id);
         return byPersonId.orElse(null);
 
+    }
+
+    public Person findByName(String username) {
+       return personRepository.findByUsername(username).orElse(null);
     }
 }

@@ -14,16 +14,19 @@ public class MainController {
     @GetMapping("/home")
     public String home() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
-        switch (personDetails.getPerson().getRole()){
-            case "ROLE_ADMIN":
-                return "redirect:/admin/";
-            case "ROLE_USER":
-                return "redirect:/user/user_info";
-            case "ROLE_STAFF":
-                return "redirect:/staff/";
-            default:
-                return "redirect:auth/login";
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof PersonDetails) {
+            PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
+            switch (personDetails.getPerson().getRole()) {
+                case "ROLE_ADMIN":
+                    return "redirect:/admin/";
+                case "ROLE_USER":
+                    return "redirect:/user/";
+                case "ROLE_STAFF":
+                    return "redirect:/staff/";
+
+            }
         }
+        return "redirect:/auth/login";
     }
 }

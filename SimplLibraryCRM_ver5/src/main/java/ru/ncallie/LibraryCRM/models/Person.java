@@ -14,9 +14,9 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "Имя не должно быть пустым")
-    @Size(min = 5, max = 20, message = "Имя должно быть длинной от 5 до 20")
-    @Pattern(regexp = "\\w+", message = "Логин должен сожержать только латинские буквы, цифры, символы ")
+    @NotEmpty(message = "Login не должен быть пустым")
+    @Size(min = 5, max = 20, message = "Login должен быть длинной от 5 до 20")
+    @Pattern(regexp = "\\w+", message = "Login должен сожержать только латинские буквы, цифры, символы ")
     @Column(name = "username")
     private String username;
 

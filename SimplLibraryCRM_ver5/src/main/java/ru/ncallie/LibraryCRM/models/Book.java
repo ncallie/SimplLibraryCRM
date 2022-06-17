@@ -23,7 +23,7 @@ public class Book {
     @Min(value = 0, message = "Неверно указан год")
     @Max(value = 9999, message = "Неверно указан год")
     @Column(name = "year")
-    private int year;
+    private Integer year;
 
     @ManyToOne
     @JoinColumn(name = "person_info_id", referencedColumnName = "id")
@@ -56,11 +56,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

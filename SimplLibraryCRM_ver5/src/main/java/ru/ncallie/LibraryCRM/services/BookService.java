@@ -26,7 +26,7 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Book findOne(int book_id) {
+    public Book findOne(Integer book_id) {
         Optional<Book> byId = bookRepository.findById(book_id);
         return byId.orElse(null);
     }
@@ -37,24 +37,24 @@ public class BookService {
     }
 
     @Transactional
-    public void update(int id, Book book) {
+    public void update(Integer id, Book book) {
         book.setId(id);
         bookRepository.save(book);
     }
 
     @Transactional
-    public void delete(int id) {
+    public void delete(Integer id) {
         bookRepository.deleteById(id);
     }
 
     @Transactional
-    public void release(int id) {
+    public void release(Integer id) {
         Book book = bookRepository.findById(id).get();
         book.setOwner(null);
     }
 
     @Transactional
-    public void assign(int id, PersonInfo personInfo) {
+    public void assign(Integer id, PersonInfo personInfo) {
         PersonInfo one = personInfoService.findOne(personInfo.getId());
         bookRepository.findById(id).get().setOwner(one);
     }

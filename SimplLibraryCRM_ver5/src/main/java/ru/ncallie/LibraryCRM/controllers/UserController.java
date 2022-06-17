@@ -26,7 +26,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/user_info")
+    @GetMapping()
     public String showUserInfo(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();

@@ -14,14 +14,14 @@ public class PersonInfo {
     private Integer id;
 
     @NotEmpty(message = "Поле ФИО должно быть заполнено")
-    @Pattern(regexp = "[А-Я][а-я]{3,20} [А-Я][а-я]{3,20} [А-Я][а-я]{3,20}", message = "Неверный формат")
+    @Pattern(regexp = "[А-Я][а-я]{3,20} [А-Я][а-я]{3,20} [А-Я][а-я]{3,20}", message = "Поле ФИО заполненно не корректно")
     @Column(name = "full_name")
     private String fullName;
 
     @Min(value = 1900, message = "Неверно указан год")
     @Max(value = 9999, message = "Неверно указан год")
     @Column(name = "birth_year")
-    private int birth_year;
+    private Integer birth_year;
 
     @Email(message = "Email содержит ошибки")
     @NotEmpty(message = "Поле Email должно быть заполнено")
@@ -38,8 +38,7 @@ public class PersonInfo {
     private Person person;
 
     @OneToMany(mappedBy = "owner")
-    private List<Book> books;
-
+    private List<Book> books = new java.util.ArrayList<>();
 
     public PersonInfo() {
     }
@@ -68,11 +67,11 @@ public class PersonInfo {
         this.fullName = fullName;
     }
 
-    public int getBirth_year() {
+    public Integer getBirth_year() {
         return birth_year;
     }
 
-    public void setBirth_year(int birth_year) {
+    public void setBirth_year(Integer birth_year) {
         this.birth_year = birth_year;
     }
 

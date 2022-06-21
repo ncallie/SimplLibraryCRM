@@ -73,7 +73,7 @@ public class StaffController {
             model.addAttribute("person_info", personInfo);
             model.addAttribute("books", personInfo.getBooks());
         }
-        return "/staff/user";
+        return "staff/user";
     }
 
     @GetMapping("/users/edit/{id}")

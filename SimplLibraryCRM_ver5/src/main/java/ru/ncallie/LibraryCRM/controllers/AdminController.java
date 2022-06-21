@@ -50,7 +50,7 @@ public class AdminController {
     public String performRegistration(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors())
-            return "/admin/reg";
+            return "admin/reg";
         registrationService.register(person);
         return "redirect:/admin/";
     }
@@ -69,7 +69,7 @@ public class AdminController {
         PersonInfo personInfo = personInfoService.findOne(id);
         if (personInfo != null)
             model.addAttribute("person_info", personInfo);
-        return "/admin/user";
+        return "admin/user";
     }
 
     @GetMapping("/users/edit/{id}")
